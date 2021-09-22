@@ -1,6 +1,7 @@
 # quake2021
 Data and analysis relating to the 5.8M Melbourne quake of 2021
 
+![Monash Woodside Living Lab](figs/ted.jpg)
 
 ## Monash University Woodside Living Lab Building
 The building is located [here](https://goo.gl/maps/7iDsWFYNjBhht38x9)
