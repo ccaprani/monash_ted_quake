@@ -21,3 +21,8 @@ Dimensions on the floor plate are approximately:
 - 24 m East-West
 - 50 m North-South
 
+## Sensors
+The accelerometers are Silicon Designs MEMS, Model 22120-002 with +/- 2g range, and sensitivity of 2000 mV/g. A data sheet is available [here](https://drive.google.com/file/d/142NbYdEPjYqU1gCK9ELptHQghMXgA1qA/view)
+
+The readings are in "g" units, and must be zeroed from the start of the recording.
+
