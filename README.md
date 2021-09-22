@@ -3,6 +3,8 @@ Data and analysis relating to the 5.8M Melbourne quake of 2021
 
 
 ## Monash University Woodside Living Lab Building
+The building is located [here](https://goo.gl/maps/7iDsWFYNjBhht38x9)
+
 The building is two structures, separated by an expansion joint. Key channels for the south building are:
 
 | Floor | AOD | NW | NE | SE | SW |
