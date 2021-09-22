@@ -26,3 +26,9 @@ for c in plot_list:
 
 ax.legend()
 plt.show()
+
+# Sample rate and start time
+t0 = channels[0].properties["wf_start_time"]
+fs = 1 / channels[0].properties["wf_increment"]
+print(f"Record start time {t0}")
+print(f"Sample rate: {fs}")
