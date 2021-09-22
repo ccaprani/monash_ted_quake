@@ -29,14 +29,13 @@ ax.legend()
 plt.show()
 
 # Sample rate and start time in UTC
-t0 = channels[0].properties["wf_start_time"]
-fs = 1 / channels[0].properties["wf_increment"]
+c0 = channels[0]
+t0 = c0.properties["wf_start_time"]
+fs = 1 / c0.properties["wf_increment"]
 print(f"Record start time {t0}")
 print(f"Sample rate: {fs}")
 
-# Export relevant data window to CSV (~81 MB file)
-c0 = channels[0]
-
+# Export relevant zeroed data window to CSV (~81 MB file)
 t0 = c0.properties["wf_start_time"]
 ts = t0 + np.timedelta64(60, "s")
 tf = t0 + np.timedelta64(6, "m")
