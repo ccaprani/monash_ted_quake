@@ -95,3 +95,5 @@ for col in df_acc:
         data = df_acc[col]
         ddxf, dxf, xf = filter_and_integrate(data, 1.0, 1.0, 2.0)
         df_disp[col] = xf
+
+df_disp.to_csv("disps.csv", index=False)
