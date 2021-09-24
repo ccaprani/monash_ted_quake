@@ -64,8 +64,10 @@ def plot_channel(df, idc):
 # Reading the NI TDMS file
 tdms_file = TdmsFile.read("202109220920_SHM-6.tdms")
 channels = tdms_file.groups()[0].channels()
-c0 = channels[0]
-fs = 1 / c0.properties["wf_increment"]
+fs = np.empty(len(channels))
+for i, c in enumerate(channels):
+    fs[i] = 1 / c.properties["wf_increment"]
+fs = fs.mean()
 dt = 1 / fs
 
 t0 = c0.properties["wf_start_time"]

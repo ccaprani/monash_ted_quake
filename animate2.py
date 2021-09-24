@@ -1,6 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
+Created on Fri Sep 24 11:07:55 2021
+
+@author: ccaprani
+"""
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
 Created on Wed Sep 22 22:49:38 2021
 
 @author: ccaprani
@@ -10,16 +18,16 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import pandas as pd
+import subprocess
 
 """
 This module assumes that there is a disps.csv in the working directory which
 is written by the analysedata.py script.
 
-Using FuncAnimation is complex due to the need to return the artists after each frame,
-but it does not render otherwise. Using the simpler Celluloid package also doesn't work.
+Alternative way to make the animation from static images saved to disk.
 
-The surfaces don't render fully when `set_verts` is used to update the data. Not sure
-why this is the case, and a few attempts to solve did not resolve it.
+The native sample rate fs = 3125/18 = 173.6111...Hz; so fs/7 = ~24.80 frames 
+per second, so only take every 7th to keep video fps reasonable, but real time.
 """
 
 df_disp = pd.read_csv("disps.csv")
@@ -56,20 +64,6 @@ def plot_quad(ax, iNode, jNode, kNode, lNode, col):
         color=col,
         lw=0.5,
     )
-    return surf, surfline
-
-
-def update_quad(surf, surfline, iNode, jNode, kNode, lNode):
-    surf.set_verts(np.array([iNode, jNode, kNode, lNode]))
-    # Weird artefact on surfaces that can't be got rid of?
-    # surf.do_3d_projection()  # https://bit.ly/3kwE93O
-    # surf.draw(surf.axes.get_figure().canvas.get_renderer())
-    surfline.set_data_3d(
-        (iNode[0], jNode[0], kNode[0], lNode[0], iNode[0]),
-        (iNode[1], jNode[1], kNode[1], lNode[1], iNode[1]),
-        (iNode[2], jNode[2], kNode[2], lNode[2], iNode[2]),
-    )
-    return surf, surfline
 
 
 def plot_column(ax, btmNode, topNode, col="w", lw=2):
@@ -80,35 +74,6 @@ def plot_column(ax, btmNode, topNode, col="w", lw=2):
         color=col,
         lw=lw,
     )
-    return line
-
-
-def update_column(line, btmNode, topNode):
-    line.set_data_3d(
-        (btmNode[0], topNode[0]), (btmNode[1], topNode[1]), (btmNode[2], topNode[2]),
-    )
-    return line
-
-
-def get_artists(surfs, surflines, lines, text):
-    artists = np.concatenate(
-        (
-            np.array(surfs),
-            np.array(surflines).squeeze(),
-            np.array(lines).squeeze().flatten(),
-            np.array([text]),
-        )
-    )
-    return artists
-
-
-def from_artists(artists):
-    nsurf = len(zc) - 1
-    surfs = artists[:nsurf]
-    surflines = artists[nsurf : 2 * nsurf]
-    lines = artists[2 * nsurf : -1].reshape(nsurf, 4)
-    text = artists[-1]
-    return surfs, surflines, lines, text
 
 
 def channel_names(idx):
@@ -122,10 +87,9 @@ def disp_node(node, disp, factor):
     return [xd, yd, z]
 
 
-def init_frame(ax):
-    surfs = []
-    surflines = []
-    lines = []
+def draw_frame(t, ax):
+    ax.clear()
+    ax.view_init(elev=-20, azim=150)
 
     ax.patch.set_facecolor("k")
     ax.patch.set_alpha(1.0)
@@ -155,38 +119,6 @@ def init_frame(ax):
         color="white",
     )
 
-    iNodeBelow = [xc[0], yc[0], 0]
-    jNodeBelow = [xc[0], yc[1], 0]
-    kNodeBelow = [xc[1], yc[1], 0]
-    lNodeBelow = [xc[1], yc[0], 0]
-
-    for j, z in enumerate(zc[1:]):
-        iNode = [xc[0], yc[0], z]
-        jNode = [xc[0], yc[1], z]
-        kNode = [xc[1], yc[1], z]
-        lNode = [xc[1], yc[0], z]
-        surf, surfline = plot_quad(ax, iNode, jNode, kNode, lNode, "r")
-        surfs.append(surf)
-        surflines.append(surfline)
-
-        line = []
-        line.append(plot_column(ax, iNodeBelow, [*iNode, z]))
-        line.append(plot_column(ax, jNodeBelow, [*jNode, z]))
-        line.append(plot_column(ax, kNodeBelow, [*kNode, z]))
-        line.append(plot_column(ax, lNodeBelow, [*lNode, z]))
-        lines.append(line)
-
-        iNodeBelow = iNode
-        jNodeBelow = jNode
-        kNodeBelow = kNode
-        lNodeBelow = lNode
-
-    return get_artists(surfs, surflines, lines, text)
-
-
-def draw_frame(t, artists):
-    surfs, surflines, lines, text = from_artists(artists)
-
     str_time = np.datetime_as_string(np.datetime64(t), unit="ms")
     text.set_text(str_time)
 
@@ -202,6 +134,7 @@ def draw_frame(t, artists):
         jNode = [xc[0], yc[1], z]
         kNode = [xc[1], yc[1], z]
         lNode = [xc[1], yc[0], z]
+        # plot_quad(ax, iNode, jNode, kNode, lNode, "r")
 
         cx, cy = channel_names(iNode_channels[j])
         disp = df_disp[[cx, cy]].loc[i]
@@ -219,19 +152,17 @@ def draw_frame(t, artists):
         disp = df_disp[[cx, cy]].loc[i]
         lNodeD = disp_node(lNode, disp, factor)
 
-        update_quad(surfs[j], surflines[j], iNodeD, jNodeD, kNodeD, lNodeD)
+        plot_quad(ax, iNodeD, jNodeD, kNodeD, lNodeD, "r")
 
-        update_column(lines[j][0], iNodeBelow, [*iNodeD, z])
-        update_column(lines[j][1], jNodeBelow, [*jNodeD, z])
-        update_column(lines[j][2], kNodeBelow, [*kNodeD, z])
-        update_column(lines[j][3], lNodeBelow, [*lNodeD, z])
+        plot_column(ax, iNodeBelow, [*iNodeD, z])
+        plot_column(ax, jNodeBelow, [*jNodeD, z])
+        plot_column(ax, kNodeBelow, [*kNodeD, z])
+        plot_column(ax, lNodeBelow, [*lNodeD, z])
 
         iNodeBelow = iNodeD
         jNodeBelow = jNodeD
         kNodeBelow = kNodeD
         lNodeBelow = lNodeD
-
-    return get_artists(surfs, surflines, lines, text)
 
 
 time = df_disp["t"]
@@ -240,20 +171,26 @@ lim_margin = 0
 fig = plt.figure(figsize=(8, 4.5))
 fig.patch.set_facecolor("k")
 axs = fig.add_subplot(projection="3d")
-axs.view_init(elev=-20, azim=150)
-artists = init_frame(axs)
+decim = 7
+tw = time[::decim]
+for i, t in enumerate(tw):
+    draw_frame(t, axs)
+    plt.pause(0.001)  # needed to render
+    # Comment out to avoid saving to disk
+    plt.savefig(f"./images/img_{str(i).zfill(4)}.png", dpi=480)
 
-anim = animation.FuncAnimation(
-    fig,
-    draw_frame,
-    frames=time[4000:4346],
-    interval=10,
-    fargs=(artists,),
-    blit=True,
-    repeat=False,
-    save_count=3460,
+# Now make the video, assuming ffmpeg is installed on system
+fps = (3125 / 18) / decim
+subprocess.call(
+    [
+        "ffmpeg",
+        "-y",
+        "-r",
+        str(fps),
+        "-i",
+        "./images/img_%4d.png",
+        "-vcodec",
+        "libx264",
+        "ted_motion2.mp4",
+    ]
 )
-
-# fps = 173 is very close to sample rate, so basically real time
-anim.save("ted_motion2.mp4", writer=animation.FFMpegWriter(fps=173), dpi=480)
-# anim.save("ted_motion.gif", writer=animation.PillowWriter(fps=173))
