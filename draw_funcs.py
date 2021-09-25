@@ -145,14 +145,3 @@ def draw_frame(t, ax):
         lNodeBelow = lNodeD
 
     return (ax,)
-
-
-time = df_disp["t"]
-lim_margin = 0
-
-fig = plt.figure(figsize=(8, 4.5))
-fig.patch.set_facecolor("k")
-axs = fig.add_subplot(projection="3d")
-axs.set_box_aspect(
-    [ub - lb for lb, ub in (getattr(axs, f"get_{a}lim")() for a in "xyz")]
-)
