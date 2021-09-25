@@ -70,6 +70,7 @@ for i, c in enumerate(channels):
 fs = fs.mean()
 dt = 1 / fs
 
+c0 = channels[0]
 t0 = c0.properties["wf_start_time"]
 ts = t0 + np.timedelta64(60, "s")
 tf = t0 + np.timedelta64(3, "m")
