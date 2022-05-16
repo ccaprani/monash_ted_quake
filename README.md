@@ -3,6 +3,15 @@ Data and analysis relating to the 5.8M Melbourne quake of 2021
 
 ![Monash Woodside Living Lab](figs/ted.jpg)
 
+## YouTube Links
+![Animation from fixed POV](https://www.youtube.com/watch?v=a1rzajdn2Tw)
+
+[![Animation from fixed POV](https://img.youtube.com/vi/a1rzajdn2Tw/0.jpg)](https://www.youtube.com/watch?v=a1rzajdn2Tw)
+
+![Animation with rotating camera angle](https://www.youtube.com/watch?v=CasPWxlYv9I)
+
+[![Animation with rotating camera angle](https://img.youtube.com/vi/CasPWxlYv9I/0.jpg)](https://www.youtube.com/watch?v=CasPWxlYv9I)
+
 ## Monash University Woodside Living Lab Building
 The building is located [here](https://goo.gl/maps/7iDsWFYNjBhht38x9)
 
