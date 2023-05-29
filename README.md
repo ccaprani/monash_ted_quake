@@ -1,5 +1,11 @@
-# quake2021
-Data and analysis relating to the 5.8M Melbourne quake of 2021
+# monash_ted_quake
+
+## Quake 2021
+Data and analysis relating to the 5.8M Mansfield quake of 22 September 2021
+
+## Quake 2023
+Data and analysis of the 3.8M Sunbury quake of 28 May 2023
+
 
 ![Monash Woodside Living Lab](figs/ted.jpg)
 

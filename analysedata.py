@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 """
 Contains data from the Monash Unviersity Woodside Living Lab Building 
 recording of the 22 Sept 2021 Mansfield 5.8M earthquake
@@ -15,7 +12,22 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from scipy import integrate as it
 from scipy import signal
+from pathlib import Path
 
+# The 22 Sept 2021 Mansfield 5.8M earthquake
+quake2021_file = "./quake2021/202109220920_SHM-6.tdms"
+quake2021_ts = '2021-09-21T23:21:00.0'
+quake2021_dt = 180
+
+# The 28 May 2023 Sunbury quake
+quake2023_file = "./quake2023/202305282340_SHM-6.tdms"
+quake2023_ts = '2023-05-28T13:46:20.0'
+quake2023_dt = 120
+
+# Which quake?
+quake_file = Path(quake2023_file)
+quake_ts = quake2023_ts
+quake_dt = quake2023_dt
 
 def butter_highpass(cutoff, fs, order=5):
     nyq = 0.5 * fs
@@ -62,7 +74,7 @@ def plot_channel(df, idc):
 
 
 # Reading the NI TDMS file
-tdms_file = TdmsFile.read("202109220920_SHM-6.tdms")
+tdms_file = TdmsFile.read(quake_file)
 channels = tdms_file.groups()[0].channels()
 fs = np.empty(len(channels))
 for i, c in enumerate(channels):
@@ -72,8 +84,8 @@ dt = 1 / fs
 
 c0 = channels[0]
 t0 = c0.properties["wf_start_time"]
-ts = t0 + np.timedelta64(60, "s")
-tf = t0 + np.timedelta64(3, "m")
+ts = np.datetime64(quake_ts)  # t0 + np.timedelta64(60, "s")
+tf = ts + np.timedelta64(quake_dt, "s")
 
 t = c0.time_track(absolute_time=True)
 idx = np.where((t > ts) & (t < tf))

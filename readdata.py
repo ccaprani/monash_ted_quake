@@ -2,20 +2,29 @@
 # -*- coding: utf-8 -*-
 
 """
-Contains data from the Monash Unviersity Woodside Living Lab Building 
-recording of the 22 Sept 2021 Mansfield 5.8M earthquake
+Contains data from the Monash University Woodside Living Lab Building 
+recording of earthquakes
 
 Basic data reading and plotting
 """
-
 # pip install npTDMS for reading the NI TDMS file type
 from nptdms import TdmsFile
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
+from pathlib import Path
+
+# The 22 Sept 2021 Mansfield 5.8M earthquake
+quake2021_file = "./quake2021/202109220920_SHM-6.tdms"
+
+# The 28 May 2023 Sunbury quake
+quake2023_file = "./quake2023/202305282340_SHM-6.tdms"
+
+# Which quake?
+quake_file = Path(quake2023_file)
 
 # Reading the NI TDMS file
-tdms_file = TdmsFile.read("202109220920_SHM-6.tdms")
+tdms_file = TdmsFile.read(quake_file)
 channels = tdms_file.groups()[0].channels()
 
 # Quick plot of the data

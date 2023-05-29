@@ -25,6 +25,13 @@ frames, it's not presently practical, and the original approach of redrawing
 the entire axes needs to be used.
 """
 
+quake2021_title = "M5.9 Mansfield Earthquake (22/9/21)"
+quake2023_title = "M3.8 Sunbury Earthquake (2023-05-28)"
+quake_title = quake2023_title
+
+# Displacement amplification factor
+factor = 5000
+
 df_disp = pd.read_csv("disps.csv")
 
 # Base coords
@@ -37,9 +44,6 @@ iNode_channels = np.linspace(5, 33, 5, dtype=int)
 jNode_channels = np.linspace(4, 32, 5, dtype=int)
 kNode_channels = np.linspace(2, 30, 5, dtype=int)
 lNode_channels = np.linspace(3, 31, 5, dtype=int)
-
-# Displacement amplification factor
-factor = 2000
 
 
 def plot_quad(ax, iNode, jNode, kNode, lNode, col):
@@ -172,7 +176,7 @@ def init_frame(ax):
     ax.text2D(
         0.5,
         1.0,
-        "Monash University Living Lab\nM5.9 Mansfield Earthquake (22/9/21)\nMotion (x2000)",
+        "Monash University Living Lab\n" + quake_title + f"\nMotion (x{factor})",
         ha="center",
         va="center",
         transform=ax.transAxes,
@@ -284,7 +288,7 @@ artists = init_frame(axs)
 anim = animation.FuncAnimation(
     fig,
     draw_frame,
-    frames=time[4000:4500],
+    frames=time[2500:7500],
     interval=10,
     fargs=(artists,),
     blit=True,
@@ -293,5 +297,5 @@ anim = animation.FuncAnimation(
 )
 
 # fps = 173 is very close to sample rate, so basically real time
-# anim.save("ted_motion2.mp4", writer=animation.FFMpegWriter(fps=173), dpi=480)
+# anim.save("ted_motion.mp4", writer=animation.FFMpegWriter(fps=173), dpi=480)
 # anim.save("ted_motion.gif", writer=animation.PillowWriter(fps=173))

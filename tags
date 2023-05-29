@@ -1,0 +1,137 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Z	mwe.py	/^Z = 4 * np.ones_like(X)$/;"	v
+Z	mwe.py	/^Z = 6 * np.ones_like(X)$/;"	v
+Z	mwe.py	/^Z = 7 * np.ones_like(X)$/;"	v
+Z	mwe.py	/^Z = 8 * np.ones_like(X)$/;"	v
+Z	mwe.py	/^Z = z * np.ones_like(X)$/;"	v
+anim	animate.py	/^anim = animation.FuncAnimation($/;"	v
+anim	animate3.py	/^anim = animation.FuncAnimation($/;"	v
+artists	animate3.py	/^artists = init_frame(axs)$/;"	v
+ax	mwe.py	/^ax = fig.add_subplot(projection="3d")$/;"	v
+axs	animate.py	/^axs = fig.add_subplot(projection="3d")$/;"	v
+axs	animate2.py	/^axs = fig.add_subplot(projection="3d")$/;"	v
+axs	animate3.py	/^axs = fig.add_subplot(projection="3d")$/;"	v
+blit	animate.py	/^    blit=True,$/;"	v
+blit	animate3.py	/^    blit=True,$/;"	v
+butter_highpass	analysedata.py	/^def butter_highpass(cutoff, fs, order=5):$/;"	f
+butter_highpass_filter	analysedata.py	/^def butter_highpass_filter(data, cutoff, fs, order=5):$/;"	f
+c0	analysedata.py	/^c0 = channels[0]$/;"	v
+c0	readdata.py	/^c0 = channels[0]$/;"	v
+channel_names	animate3.py	/^def channel_names(idx):$/;"	f
+channel_names	draw_funcs.py	/^def channel_names(idx):$/;"	f
+channels	analysedata.py	/^channels = tdms_file.groups()[0].channels()$/;"	v
+channels	readdata.py	/^channels = tdms_file.groups()[0].channels()$/;"	v
+data	analysedata.py	/^        data = df_acc[col]$/;"	v
+data	analysedata.py	/^    data = c[idx] - zero_data.mean()$/;"	v
+data	readdata.py	/^    data = c[:]$/;"	v
+data	readdata.py	/^    data = c[idx] - zero_data.mean()$/;"	v
+decim	animate.py	/^decim = 7$/;"	v
+decim	animate2.py	/^decim = 7$/;"	v
+df	readdata.py	/^df = pd.DataFrame()$/;"	v
+df_acc	analysedata.py	/^df_acc = pd.DataFrame()$/;"	v
+df_disp	analysedata.py	/^df_disp = pd.DataFrame()$/;"	v
+df_disp	animate3.py	/^df_disp = pd.read_csv("disps.csv")$/;"	v
+df_disp	draw_funcs.py	/^df_disp = pd.read_csv("disps.csv")$/;"	v
+disp_node	animate3.py	/^def disp_node(node, disp, factor):$/;"	f
+disp_node	draw_funcs.py	/^def disp_node(node, disp, factor):$/;"	f
+draw_frame	animate3.py	/^def draw_frame(t, artists):$/;"	f
+draw_frame	draw_funcs.py	/^def draw_frame(t, ax):$/;"	f
+dt	analysedata.py	/^dt = 1 \/ fs$/;"	v
+factor	animate3.py	/^factor = 5000$/;"	v
+factor	draw_funcs.py	/^factor = 2000$/;"	v
+fargs	animate.py	/^    fargs=(axs,),$/;"	v
+fargs	animate3.py	/^    fargs=(artists,),$/;"	v
+fig	animate.py	/^fig = plt.figure(figsize=(8, 4.5))$/;"	v
+fig	animate2.py	/^fig = plt.figure(figsize=(8, 4.5))$/;"	v
+fig	animate3.py	/^fig = plt.figure(figsize=(8, 4.5))$/;"	v
+fig	mwe.py	/^fig = plt.figure(figsize=(8, 4.5))$/;"	v
+filter_and_integrate	analysedata.py	/^def filter_and_integrate(data, fc_ddx, fc_dx, fc_x):$/;"	f
+fps	animate2.py	/^    fps = (3125 \/ 18) \/ decim$/;"	v
+frames	animate.py	/^    frames=tw,$/;"	v
+frames	animate3.py	/^    frames=time[2500:7500],$/;"	v
+from_artists	animate3.py	/^def from_artists(artists):$/;"	f
+fs	analysedata.py	/^fs = fs.mean()$/;"	v
+fs	analysedata.py	/^fs = np.empty(len(channels))$/;"	v
+fs	readdata.py	/^fs = 1 \/ c0.properties["wf_increment"]$/;"	v
+get_artists	animate3.py	/^def get_artists(surfs, surflines, lines, text):$/;"	f
+iNode_channels	animate3.py	/^iNode_channels = np.linspace(5, 33, 5, dtype=int)$/;"	v
+iNode_channels	draw_funcs.py	/^iNode_channels = np.linspace(5, 33, 5, dtype=int)$/;"	v
+idx	analysedata.py	/^idx = np.where((t > ts) & (t < tf))$/;"	v
+idx	readdata.py	/^idx = np.where((t > ts) & (t < tf))$/;"	v
+init_frame	animate3.py	/^def init_frame(ax):$/;"	f
+interval	animate.py	/^    interval=10,$/;"	v
+interval	animate3.py	/^    interval=10,$/;"	v
+jNode_channels	animate3.py	/^jNode_channels = np.linspace(4, 32, 5, dtype=int)$/;"	v
+jNode_channels	draw_funcs.py	/^jNode_channels = np.linspace(4, 32, 5, dtype=int)$/;"	v
+kNode_channels	animate3.py	/^kNode_channels = np.linspace(2, 30, 5, dtype=int)$/;"	v
+kNode_channels	draw_funcs.py	/^kNode_channels = np.linspace(2, 30, 5, dtype=int)$/;"	v
+lNode_channels	animate3.py	/^lNode_channels = np.linspace(3, 31, 5, dtype=int)$/;"	v
+lNode_channels	draw_funcs.py	/^lNode_channels = np.linspace(3, 31, 5, dtype=int)$/;"	v
+lim_margin	animate.py	/^lim_margin = 0$/;"	v
+lim_margin	animate2.py	/^lim_margin = 0$/;"	v
+lim_margin	animate3.py	/^lim_margin = 0$/;"	v
+plot_channel	analysedata.py	/^def plot_channel(df, idc):$/;"	f
+plot_column	animate3.py	/^def plot_column(ax, btmNode, topNode, col="w", lw=2):$/;"	f
+plot_column	draw_funcs.py	/^def plot_column(ax, btmNode, topNode, col="w", lw=2):$/;"	f
+plot_quad	animate3.py	/^def plot_quad(ax, iNode, jNode, kNode, lNode, col):$/;"	f
+plot_quad	draw_funcs.py	/^def plot_quad(ax, iNode, jNode, kNode, lNode, col="r"):$/;"	f
+quake2021_dt	analysedata.py	/^quake2021_dt = 180$/;"	v
+quake2021_file	analysedata.py	/^quake2021_file = ".\/quake2021\/202109220920_SHM-6.tdms"$/;"	v
+quake2021_file	readdata.py	/^quake2021_file = ".\/quake2021\/202109220920_SHM-6.tdms"$/;"	v
+quake2021_title	animate3.py	/^quake2021_title = "M5.9 Mansfield Earthquake (22\/9\/21)"$/;"	v
+quake2021_ts	analysedata.py	/^quake2021_ts = '2023-05-28T13:40:59.0'$/;"	v
+quake2023_dt	analysedata.py	/^quake2023_dt = 120$/;"	v
+quake2023_file	analysedata.py	/^quake2023_file = ".\/quake2023\/202305282340_SHM-6.tdms"$/;"	v
+quake2023_file	readdata.py	/^quake2023_file = ".\/quake2023\/202305282340_SHM-6.tdms"$/;"	v
+quake2023_title	animate3.py	/^quake2023_title = "M3.8 Sunbury Earthquake (2023-05-28)"$/;"	v
+quake2023_ts	analysedata.py	/^quake2023_ts = '2023-05-28T13:46:20.0'$/;"	v
+quake_dt	analysedata.py	/^quake_dt = quake2023_dt$/;"	v
+quake_file	analysedata.py	/^quake_file = Path(quake2023_file)$/;"	v
+quake_file	readdata.py	/^quake_file = Path(quake2023_file)$/;"	v
+quake_title	animate3.py	/^quake_title = quake2023_title$/;"	v
+quake_ts	analysedata.py	/^quake_ts = quake2023_ts$/;"	v
+repeat	animate.py	/^    repeat=False,$/;"	v
+repeat	animate3.py	/^    repeat=False,$/;"	v
+save_count	animate.py	/^    save_count=3460,$/;"	v
+save_count	animate3.py	/^    save_count=3460,$/;"	v
+save_movie	animate.py	/^save_movie = False$/;"	v
+save_movie	animate2.py	/^save_movie = False$/;"	v
+surf	mwe.py	/^surf = ax.plot_surface(X, Y, Z, color="r", alpha=0.3, edgecolor="r", lw=2)$/;"	v
+t	analysedata.py	/^t = c0.time_track(absolute_time=True)$/;"	v
+t	readdata.py	/^    t = c.time_track(absolute_time=True)$/;"	v
+t	readdata.py	/^t = c0.time_track(absolute_time=True)$/;"	v
+t0	analysedata.py	/^t0 = c0.properties["wf_start_time"]$/;"	v
+t0	readdata.py	/^t0 = c0.properties["wf_start_time"]$/;"	v
+tdms_file	analysedata.py	/^tdms_file = TdmsFile.read(quake_file)$/;"	v
+tdms_file	readdata.py	/^tdms_file = TdmsFile.read(quake_file)$/;"	v
+tf	analysedata.py	/^tf = ts + np.timedelta64(quake_dt, "s")$/;"	v
+tf	readdata.py	/^tf = t0 + np.timedelta64(6, "m")$/;"	v
+time	animate.py	/^time = df_disp["t"]$/;"	v
+time	animate2.py	/^time = df_disp["t"]$/;"	v
+time	animate3.py	/^time = df_disp["t"]$/;"	v
+ts	analysedata.py	/^ts = np.datetime64(quake_ts)  # t0 + np.timedelta64(60, "s")$/;"	v
+ts	readdata.py	/^ts = t0 + np.timedelta64(60, "s")$/;"	v
+tw	analysedata.py	/^tw = t[idx]$/;"	v
+tw	animate.py	/^tw = time[::decim]$/;"	v
+tw	animate2.py	/^tw = time[::decim]$/;"	v
+tw	readdata.py	/^tw = t[idx]$/;"	v
+update_column	animate3.py	/^def update_column(line, btmNode, topNode):$/;"	f
+update_quad	animate3.py	/^def update_quad(surf, surfline, iNode, jNode, kNode, lNode):$/;"	f
+verts	mwe.py	/^verts = np.array([X, Y, Z]).reshape(4, 3)$/;"	v
+verts	mwe.py	/^verts = surf._vec$/;"	v
+x	mwe.py	/^x = np.array([10, -10])$/;"	v
+xc	animate3.py	/^xc = [12, -12]$/;"	v
+xc	draw_funcs.py	/^xc = [12, -12]$/;"	v
+y	mwe.py	/^y = np.array([25, -25])$/;"	v
+yc	animate3.py	/^yc = [25, -25]$/;"	v
+yc	draw_funcs.py	/^yc = [25, -25]$/;"	v
+z	mwe.py	/^z = 5$/;"	v
+zc	animate3.py	/^zc = [0, 5, 10, 16, 20, 25]$/;"	v
+zc	draw_funcs.py	/^zc = [0, 5, 10, 16, 20, 25]$/;"	v
+zero_data	analysedata.py	/^    zero_data = c[: (t < ts).sum()]$/;"	v
+zero_data	readdata.py	/^    zero_data = c[: (t < ts).sum()]$/;"	v
